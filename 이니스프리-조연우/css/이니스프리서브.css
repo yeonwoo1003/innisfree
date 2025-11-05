@@ -1,0 +1,425 @@
+/* 기본 초기화 및 폰트 설정 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    /* Pretendard 폰트 적용 */
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+    color: #333;
+    line-height: 1.5;
+}
+
+ul, li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 유틸리티 클래스 */
+.inner-wrap {
+    width: 1280px;
+    margin: 0 auto;
+}
+body {
+     font-family: "Noto Sans KR", sans-serif;
+    line-height: 1.6;
+    color: #333;
+    /* max-width: 768px; */
+     /* 모바일/태블릿 기준으로 최대 너비 제한 */
+    margin: 0 auto;
+    background-color: #fff;
+}
+header {
+    width: 100%;
+    background-color: #00874e; /* 이니스프리 그린 색상 */
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; /* 서브메뉴 기준으로 설정 */
+}
+
+.logo a {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    position: relative;
+    z-index: 99;
+}
+
+/* GNB (주메뉴) */
+.gnb {
+    /* 이 위치는 중앙에 메뉴를 배치하기 위해 유지 */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    /* 호버 이벤트를 전체 GNB에서 처리할 수 있도록 영역 확장 */
+    width: 100%;
+}
+
+.main-menu {
+    /* 주메뉴 항목들이 가운데 정렬되도록 조정 */
+    display: flex;
+    justify-content: center; /* 가운데 정렬 */
+    gap: 30px;
+    position: relative;
+    z-index: 20; /* 서브메뉴보다 위에 위치 */
+}
+
+.main-menu > li {
+    padding: 15px 0;
+    /* 서브메뉴가 개별 li가 아닌 ul.main-menu에 호버될 때 전체가 나오므로, li의 position:relative는 제거 */
+}
+
+/* ... (main-menu a 스타일 유지) ... */
+
+
+/* Submenu (서브메뉴 전체 영역) */
+.sub-menu-wrap {
+    position: absolute;
+    top: 100%;
+    left: 50%; 
+    transform: translateX(-50%);
+    width: 100vw; 
+    background-color: #f7fff7;
+    color: #333;
+    border-top: 1px solid #ddd;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
+    /* 기본적으로 숨김 처리 */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(-10px);
+    transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+    z-index: 10;
+    max-height: 0; /* 높이 0으로 초기 설정 */
+    overflow: hidden;
+}
+.sub-menu-wrap.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+    max-height: 500px; /* 보여줄 때 충분한 높이 설정 */
+}
+/* GNB 영역(main-menu와 sub-menu-wrap을 포함하는 gnb)에 마우스를 올렸을 때 서브메뉴 보이기 */
+.gnb:hover .sub-menu-wrap {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+    max-height: 500px; /* 메뉴 높이보다 충분히 큰 값으로 설정 */
+}
+
+/* 서브 메뉴 내부 컨텐츠 영역 */
+.sub-menu-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    display: flex;
+    /* ⭐ 핵심 수정: 내부 컬럼들을 중앙에 배치 */
+    justify-content: center; 
+    gap: 50px;
+}
+.sub-menu-content {
+    width: 100%;
+    display: none; 
+    /* ⭐ 핵심 수정: 내부 컬럼들을 중앙에 배치 */
+    justify-content: center; /* flex-start 대신 center로 변경 */
+    gap: 50px;
+}
+.sub-menu-content.active {
+    display: flex; /* 활성화된 메뉴만 보이게 */
+}
+.sub-menu-column {
+    /* 각 메뉴 항목의 너비를 유연하게 설정 */
+    flex: 0 1 auto; 
+    min-width: 150px;
+}
+
+.sub-menu-column strong {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #00874e;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 5px;
+}
+
+.sub-menu-column ul {
+    padding-left: 0;
+}
+
+.sub-menu-column li a {
+    color: #555;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 5px 0;
+    display: block;
+    line-height: 1.8;
+}
+
+.sub-menu-column li a:hover {
+    color: #00874e;
+    text-decoration: underline;
+}
+
+/* Utility Menu */
+.util-menu {
+    display: flex;
+    gap: 15px;
+}
+
+.util-menu a {
+    font-size: 14px;
+    /* 텍스트 대신 아이콘을 사용할 경우를 대비하여 아래 스타일 사용 */
+    text-indent: -9999px; 
+    width: 20px;
+    height: 20px;
+    display: block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+/* 색상 및 텍스트 강조 */
+.beige-bg { background-color: #F3E8E6;}
+.light-bg { background-color: #F4F8F4; } /* 성분 섹션 배경색 */
+.logo { font-size: 1.2rem; font-weight: bold; padding: 20px 0; text-align: center; display: block; }
+
+/* 공통 섹션 스타일 */
+.section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* 1. 메인 제품 샷 섹션 (section-main-product) 스타일 */
+
+/* 새로 추가된 오버라이드 클래스에 대한 스타일 */
+.product-shot-override {
+    /* 기존 product-shot-small의 스타일을 덮어쓰거나 초기화할 필요가 있을 경우 여기에 추가 */
+    
+    /* 1. 명시적인 너비 지정: 중앙 정렬을 위해 필수! */
+    /* 현재 body max-width가 768px이므로, 그 안에서 적당한 너비로 제한합니다. */
+    width: 90%; 
+    max-width: 500px; /* 원하는 최대 너비를 설정하세요 */
+    
+    /* 2. 중앙 정렬 적용: margin-left와 margin-right를 auto로 설정 */
+    margin-left: auto;
+    margin-right: auto;
+    
+    /* 기존 스타일 유지 */
+    
+    padding: 30px 20px; 
+    text-align: center;
+}
+.product-shot-main {
+    width: 100%; /* 상위 요소의 너비를 따라가며 화면을 꽉 채웁니다. */
+    margin-bottom: 20px; /* 다음 요소와 간격 */
+}
+
+.product-shot-main img {
+    max-width: 100%;
+    /* 기타 스타일 */
+}
+
+.main-text-group {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* 첫 번째 문단: 안 바른 듯 얇고 가볍게! */
+.main-subtitle {
+    font-size: 30px; /* 요청하신 40px */
+    font-weight: 400; /* 요청하신 얇게 */
+    margin-bottom: 10px;
+    color: #444; 
+}
+
+/* 두 번째 문단: 라이트 피팅 파운데이션 SPF20 PA++ */
+.main-title {
+    font-size: 40px; /* 요청하신 60px */
+    font-weight: 700; /* 요청하신 두껍게 */
+    margin-bottom: 20px;
+    color: #333;
+    line-height: 1.2;
+}
+/* 이미지 중앙 배치 및 스타일 */
+.product-shot-center {
+    width: 100%; 
+    max-width: 450px; /* 이미지의 최대 크기 제한 */
+    margin: 0 auto; /* 중앙 정렬 */
+
+    background-color: #F3E8E6; /* 이전 답변에서 요청하신 배경색 */
+}
+
+.product-shot-center img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 2. 커버 모델 섹션 */
+.section-cover {
+    background-color: #F3E8E6; 
+    padding-bottom: 40px; /* 섹션 하단 패딩 추가 */
+}
+
+/* model-image-container를 상대적 위치 지정의 기준점으로 설정 */
+.model-image-container {
+    position: relative; /* 중요: 하위 요소의 absolute 위치 기준점이 됩니다. */
+    padding: 0; /* 내부 패딩은 오버레이에 영향을 줄 수 있으므로 0으로 설정하거나 필요한 곳에만 줍니다. */
+    margin: 0 auto; /* 중앙 정렬 (필요시) */
+    max-width: 700px; /* 컨테이너의 최대 너비 지정 (이미지에 맞게 조절) */
+}
+.model-image-container img {
+    width: 100%; /* 이미지가 컨테이너를 꽉 채우도록 */
+    height: auto;
+    display: block;
+}
+
+/* 이미지 위에 올라갈 해시태그 오버레이 스타일 */
+.hashtags-overlay {
+    position: absolute; /* 부모 요소(model-image-container)를 기준으로 위치 지정 */
+    
+    /* 텍스트를 오른쪽 하단에 배치하도록 수정 */
+    bottom: 20px; /* 하단에서 20px 위로 */
+    right: 20px;  /* 오른쪽에서 20px 안쪽으로 */
+    
+    /* 기존 top과 left 속성은 제거하거나 0으로 설정합니다. */
+    /* top: 20px; */ 
+    /* left: 20px; */ 
+    
+    text-align: right; /* 중요: 텍스트를 컨테이너의 오른쪽으로 정렬 */
+    color: #ffffff; 
+    font-size: 1.2rem; 
+    font-weight: bold; 
+    line-height: 1.4; 
+    z-index: 10; 
+}
+
+.hashtags-overlay p {
+    margin: 10px 0; 
+    padding: 3px 0;
+}
+
+/* 모델 설명 텍스트 (기존) */
+
+/*====================================
+  3. 스와치 이미지 섹션 (분리 및 중앙 박스 적용)
+  ====================================*/
+.section-swatch-image {
+    /* padding: 40px 20px; */
+     /* 섹션 상하 패딩 */
+    text-align: center;
+    background-color:#F4F3EF
+}
+
+/* product-shot-center와 동일한 스타일: 중앙 정렬된 배경색 박스 */
+.swatch-image-box {
+    /* 배경색 박스 크기 제한 및 중앙 정렬 */
+    width: 100%;
+    margin: 0 auto; /* 중앙 정렬 */
+    
+    /* 배경색과 여백을 추가 */
+     /* product-shot-center와 동일한 색상 적용 */
+}
+
+.swatch-image-box img {
+    max-width: 100%;
+    width: auto;     /* 이미지가 꽉 차지 않고 원본 비율 유지 */
+    height: auto;
+    display: block;
+    margin: 0 auto; 
+}
+.section-swatch-image .feature-summary {
+    padding-top: 60px;
+    font-size: 25px;
+}
+.section-swatch-image .feature-summary2 {
+    padding-top: 60px;
+    font-size: 25px;
+    padding-bottom: 60px;
+}
+.section-swatch-image .feature-summary3 {
+    padding-top: 60px;
+    font-size: 25px;
+}
+.section-swatch-image .feature-summary4 {
+    padding-top: 60px;
+    font-size: 25px;
+
+}
+.feature-image-middle {
+    text-align: center; /* 내부 이미지 중앙 정렬 */
+    padding: 40px 0; /* 위 아래 여백 추가 (필요에 따라 조절) */
+}
+.section-finally {
+    background-color: #F4F3EF
+}
+.feature-image-middle img {
+    max-width: 100%; /* 이미지가 부모 컨테이너를 벗어나지 않도록 */
+    height: auto;
+    display: block;
+    margin: 0 auto; /* 이미지 중앙 정렬 */
+}
+.section-finally .finally-text .finally-text1 {
+    padding-top: 60px;
+    font-size: 25px;
+}
+.section-finally .finally-text .finally-text2 {
+    padding-top: 60px;
+    font-size: 25px;
+}
+.section-finally .finally-text .finally-text3 {
+    padding-top: 60px;
+    font-size: 25px;
+    padding-bottom: 60px;
+}
+.finally-logo-section {
+    padding: 0;
+    margin: 0;
+    background-color: #FFABAB; /* 이미지의 핑크 배경색과 유사하게 설정 */
+    height: 100px; /* 로고 섹션 전체 높이 */
+    width: 100%; /* 화면 너비 꽉 채움 */
+    position: relative;
+    
+    max-width: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.final-logo-img {
+    width: auto; /* 이미지 자체의 비율 유지 */
+    height: 100px !important; /* 요청하신 높이 강제 적용 */
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: 0;
+}

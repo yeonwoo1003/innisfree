@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이니스프리 메인 페이지 클론</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="./css/이니스프리메인.css">
+    <script src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2"></script>
+<body>
+
+    <header>
+    <div class="header-inner">
+        <h1 class="logo">
+            <a href="index.html">INNISFREE</a>
+        </h1>
+        
+        <nav class="gnb">
+            <ul class="main-menu">
+                <li data-menu="shop"><a href="sub.html">SHOP</a></li>
+                <li data-menu="best"><a href="index.html">BEST</a></li>
+                <li data-menu="live"><a href="sub.html">LIVE</a></li>
+                <li data-menu="new"><a href="index.html">NEW</a></li>
+                <li data-menu="brand"><a href="sub.html">BRAND</a></li>
+                <li data-menu="event"><a href="index.html">EVENT</a></li>
+            </ul>
+
+            <div class="sub-menu-wrap">
+                <div class="sub-menu-inner">
+                    
+                    <div class="sub-menu-content" data-target="shop">
+                        <div class="sub-menu-column">
+                            <strong>스킨케어</strong>
+                            <ul>
+                                <li><a href="#">전체</a></li>
+                                <li><a href="#">클렌징</a></li>
+                                <li><a href="#">토너/미스트</a></li>
+                                <li><a href="#">에센스/세럼</a></li>
+                                <li><a href="#">크림/젤</a></li>
+                            </ul>
+                        </div>
+                        <div class="sub-menu-column">
+                            <strong>메이크업</strong>
+                            <ul>
+                                <li><a href="#">베이스</a></li>
+                                <li><a href="#">아이</a></li>
+                                <li><a href="#">립</a></li>
+                                <li><a href="#">네일</a></li>
+                            </ul>
+                        </div>
+                        <div class="sub-menu-column">
+                            <strong>기타 제품</strong>
+                            <ul>
+                                <li><a href="#">선케어</a></li>
+                                <li><a href="#">바디/헤어</a></li>
+                                <li><a href="#">남성</a></li>
+                                <li><a href="#">미용 소품</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="sub-menu-content" data-target="best">
+                        <div class="sub-menu-column">
+                            <strong>주간 베스트</strong>
+                            <ul>
+                                <li><a href="#">전체 랭킹</a></li>
+                                <li><a href="#">스킨케어 1-10위</a></li>
+                                <li><a href="#">메이크업 1-5위</a></li>
+                            </ul>
+                        </div>
+                         <div class="sub-menu-column">
+                            <strong>고객 후기 랭킹</strong>
+                            <ul>
+                                <li><a href="#">별점 높은 제품</a></li>
+                                <li><a href="#">재구매율 TOP</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="sub-menu-content" data-target="live">
+                        <div class="sub-menu-column">
+                            <strong>LIVE 홈</strong>
+                            <ul>
+                                <li><a href="#">라이브 쇼핑</a></li>
+                                <li><a href="#">LIVE 캘린더</a></li>
+                                <li><a href="#">지난 LIVE 보기</a></li>
+                            </ul>
+                        </div>
+                        <div class="sub-menu-column">
+                            <strong>스페셜 이벤트</strong>
+                            <ul>
+                                <li><a href="#">라이브 한정 특가</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="sub-menu-content" data-target="new">
+                        <div class="sub-menu-column">
+                            <strong>신제품 전체</strong>
+                            <ul>
+                                <li><a href="#">최근 1개월 출시</a></li>
+                                <li><a href="#">프리-오더</a></li>
+                            </ul>
+                        </div>
+                        <div class="sub-menu-column">
+                            <strong>라인별 신제품</strong>
+                            <ul>
+                                <li><a href="#">레티놀 라인</a></li>
+                                <li><a href="#">그린티 라인</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="sub-menu-content" data-target="brand">
+                        <div class="sub-menu-column">
+                            <strong>INNISFREE 이야기</strong>
+                            <ul>
+                                <li><a href="#">브랜드 미션</a></li>
+                                <li><a href="#">제주 원료 이야기</a></li>
+                                <li><a href="#">지속가능성</a></li>
+                            </ul>
+                        </div>
+                        <div class="sub-menu-column">
+                            <strong>광고 캠페인</strong>
+                            <ul>
+                                <li><a href="#">TV CF</a></li>
+                                <li><a href="#">화보</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="sub-menu-content" data-target="event">
+                        <div class="sub-menu-column">
+                            <strong>진행 중인 이벤트</strong>
+                            <ul>
+                                <li><a href="#">기획전/할인</a></li>
+                                <li><a href="#">증정/체험</a></li>
+                                <li><a href="#">당첨자 발표</a></li>
+                            </ul>
+                        </div>
+                        <div class="sub-menu-column">
+                            <strong>멤버십 혜택</strong>
+                            <ul>
+                                <li><a href="#">등급별 혜택</a></li>
+                                <li><a href="#">쿠폰함</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+        <div class="util-menu">
+        </div>
+    </div>
+</header>
+
+    <section class="main-banner-section">
+        <div class="swiper main-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide banner-slide-1" style="background-image: url('./img/2.png');">      
+                </div>
+                <div class="swiper-slide banner-slide-2" style="background-image: url(./img/민규.png);"></div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </section>
+
+    <main>
+        <section class="product-section animate-on-scroll">
+            <div class="product-item item-myeyeshadow">
+                <div class="product-image">
+                    <img src="./img/Group 1.png" alt="MY EYESHADOW [MATTE]"> 
+                </div>
+                <div class="product-info">
+                    <h3>MY EYESHADOW [MATTE]</h3>
+                    <p class="description">마이 아이섀도우 [매트]</p>
+                    <p class="price">4,000원</p>
+                    <p class="text">눈가 정리용 베이스 컬러부터 음영감과 <br>
+                    색감을 더해 주는 쉐이드로 구성된 10가지 매트 섀도우</p>
+                    <a href="#" class="detail-link">자세히 보기</a>
+                </div>
+            </div>
+            
+            <div class="product-item item-nosebum">
+                 <div class="product-image">
+                    <img src="./img/Rectangle 14.png" alt="NO-SEBUM BLUR PRIMER">
+                </div>
+                <div class="product-info">
+                    <h3>NO-SEBUM BLUR PRIMER</h3>
+                    <p class="description">노세범 블러 프라이머</p>
+                    <p class="price">12,000원</p>
+                    <p class="text">잔주름, 피부 요철은 물론 넓은 모공까지 <br>
+                    커버해 메이크업 잘 받는 매끈 피부결</p>
+                    <a href="#" class="detail-link">자세히 보기</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="model-banner-section animate-on-scroll">
+            <img src="./img/Rectangle 17.png" alt="모델 이미지" class="full-width-image">
+        </section>
+
+        <section class="new-arrivals-section animate-on-scroll">
+            <h2>NEW ARRIVALS</h2>
+            <div class="product-list">
+                <article class="product-card">
+                    <figure>
+                        <img src="./img/Group 1.png" alt="제품 이미지 1">
+                    </figure>
+                    <p class="name">음영 정석 팔레트</p>
+                    <p class="price">25,000원</p>
+                </article>
+                <article class="product-card">
+                    <figure>
+                        <img src="./img/Group 2.png" alt="제품 이미지 2">
+                    </figure>
+                    <p class="name">레티놀 PDRN 스킨부스터 토너</p>
+                    <p class="price">17,000원</p>
+                </article>
+                <article class="product-card">
+                    <figure>
+                         <img src="./img/Group 3.png" alt="제품 이미지 3">
+                    <p class="name">비타민C 캡슐 세럼</p>
+                    <p class="price">26,000원</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="instagram-section animate-on-scroll">
+            <p class="instagram-handle">@innisfreeofficial</p>
+            <div class="insta-feed">
+                <a href="#" class="insta-post"><img src="./img/Group 4.png" alt="인스타그램 사진 1"></a>
+                <a href="#" class="insta-post"><img src="./img/Group 5.png" alt="인스타그램 사진 2"></a>
+                <a href="#" class="insta-post"><img src="./img/Group 6.png" alt="인스타그램 사진 3"></a>
+                <a href="#" class="insta-post"><img src="./img/Group 7.png" alt="인스타그램 사진 4"></a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-top">
+            <ul class="footer-links">
+                <li><a href="#">회사소개</a></li>
+                <li><a href="#">매장찾기</a></li>
+                <li><a href="#">고객센터</a></li>
+                <li><a href="#">공지사항</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p class="copyright">
+                &copy; AMOREPACIFIC CORPORATION. All rights reserved.
+            </p>
+            <div class="sns-links">
+                <a href="#" class="sns-icon insta">Insta</a>
+                <a href="#" class="sns-icon youtube">YouTube</a>
+                <a href="#" class="sns-icon X">X</a>
+                <a href="#" class="sns-icon facebook"></a>
+            </div>
+        </div>
+    </footer>
+<script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./js/이니스프리메인.js"></script>
+</body>
+</html>

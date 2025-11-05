@@ -1,0 +1,582 @@
+/* 폰트 및 기본 스타일 설정 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* Pretendard 폰트 적용 */
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+    color: #333;
+    line-height: 1.5;
+}
+
+ul, li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 유틸리티 클래스 */
+.inner-wrap {
+    width: 1280px;
+    margin: 0 auto;
+}
+
+/* ------------------------------------------- */
+/* 1. Header & Navigation (Nav 마우스 오버 효과 포함) */
+/* ------------------------------------------- */
+header {
+    width: 100%;
+    background-color: #00874e; /* 이니스프리 그린 색상 */
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; /* 서브메뉴 기준으로 설정 */
+}
+
+.logo a {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    position: relative;
+    z-index: 99;
+}
+
+/* GNB (주메뉴) */
+.gnb {
+    /* 이 위치는 중앙에 메뉴를 배치하기 위해 유지 */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    /* 호버 이벤트를 전체 GNB에서 처리할 수 있도록 영역 확장 */
+    width: 100%;
+}
+
+.main-menu {
+    /* 주메뉴 항목들이 가운데 정렬되도록 조정 */
+    display: flex;
+    justify-content: center; /* 가운데 정렬 */
+    gap: 30px;
+    position: relative;
+    z-index: 20; /* 서브메뉴보다 위에 위치 */
+}
+
+.main-menu > li {
+    padding: 15px 0;
+    /* 서브메뉴가 개별 li가 아닌 ul.main-menu에 호버될 때 전체가 나오므로, li의 position:relative는 제거 */
+}
+
+/* ... (main-menu a 스타일 유지) ... */
+
+
+/* Submenu (서브메뉴 전체 영역) */
+.sub-menu-wrap {
+    position: absolute;
+    top: 100%;
+    left: 50%; 
+    transform: translateX(-50%);
+    width: 100vw; 
+    background-color: #f7fff7;
+    color: #333;
+    border-top: 1px solid #ddd;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
+    /* 기본적으로 숨김 처리 */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(-10px);
+    transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+    z-index: 10;
+    max-height: 0; /* 높이 0으로 초기 설정 */
+    overflow: hidden;
+}
+.sub-menu-wrap.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+    max-height: 500px; /* 보여줄 때 충분한 높이 설정 */
+}
+/* GNB 영역(main-menu와 sub-menu-wrap을 포함하는 gnb)에 마우스를 올렸을 때 서브메뉴 보이기 */
+.gnb:hover .sub-menu-wrap {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+    max-height: 500px; /* 메뉴 높이보다 충분히 큰 값으로 설정 */
+}
+
+/* 서브 메뉴 내부 컨텐츠 영역 */
+.sub-menu-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    display: flex;
+    /* ⭐ 핵심 수정: 내부 컬럼들을 중앙에 배치 */
+    justify-content: center; 
+    gap: 50px;
+}
+.sub-menu-content {
+    width: 100%;
+    display: none; 
+    /* ⭐ 핵심 수정: 내부 컬럼들을 중앙에 배치 */
+    justify-content: center; /* flex-start 대신 center로 변경 */
+    gap: 50px;
+}
+.sub-menu-content.active {
+    display: flex; /* 활성화된 메뉴만 보이게 */
+}
+.sub-menu-column {
+    /* 각 메뉴 항목의 너비를 유연하게 설정 */
+    flex: 0 1 auto; 
+    min-width: 150px;
+}
+
+.sub-menu-column strong {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #00874e;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 5px;
+}
+
+.sub-menu-column ul {
+    padding-left: 0;
+}
+
+.sub-menu-column li a {
+    color: #555;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 5px 0;
+    display: block;
+    line-height: 1.8;
+}
+
+.sub-menu-column li a:hover {
+    color: #00874e;
+    text-decoration: underline;
+}
+
+/* Utility Menu */
+.util-menu {
+    display: flex;
+    gap: 15px;
+}
+
+.util-menu a {
+    font-size: 14px;
+    /* 텍스트 대신 아이콘을 사용할 경우를 대비하여 아래 스타일 사용 */
+    text-indent: -9999px; 
+    width: 20px;
+    height: 20px;
+    display: block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+/* 아이콘은 실제 이미지를 사용해야 하지만, CSS로 임시 표현 */
+.search { background-color: #fff; border-radius: 50%; }
+.mypage { background-color: #fff; border-radius: 50%; }
+.cart { background-color: #fff; border-radius: 50%; }
+.lang { font-size: 16px; text-indent: 0; width: auto; height: auto; }
+
+
+/* ------------------------------------------- */
+/* 2. Swiper Banner Section */
+/* ------------------------------------------- */
+.main-banner-section {
+    position: relative;
+    height: 700px; /* 배너 높이 설정 */
+    overflow: hidden;
+}
+
+.main-swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.banner-slide-1 {
+    /* 실제 이미지는 images/main_banner_1.jpg 파일로 대체 필요 */
+    /* 현재는 예시 배경색과 텍스트 위치를 맞추기 위한 스타일입니다. */
+    background-color: #88c88c; 
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding-top: 50px;
+    padding-right: 15%;
+}
+
+.banner-slide-1 .text-content {
+    color: #333; /* 텍스트 색상 */
+    text-align: right;
+    width: 400px;
+}
+
+.banner-slide-1 h2 {
+    font-size: 48px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.banner-slide-1 p {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.view-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid #333;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.view-btn:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Swiper Navigation Customization */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 18px !important;
+    font-weight: bold;
+}
+
+/* ------------------------------------------- */
+/* 3. Main Content Sections */
+/* ------------------------------------------- */
+
+main {
+    padding: 50px 0;
+    background-color: #fcfcf9;
+}
+
+/* Section 1: Product Items */
+.product-section {
+    max-width: 1400px;
+    margin: 50px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+.product-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+}
+
+.product-item img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.item-myeyeshadow {
+    flex-direction: row; /* 왼쪽 이미지, 오른쪽 텍스트 */
+    margin-top: 50px;
+}
+
+.item-myeyeshadow .product-image {
+    width: 40%;
+}
+
+.item-nosebum {
+    flex-direction: row-reverse; /* 오른쪽 이미지, 왼쪽 텍스트 */
+    justify-content: space-between;
+}
+
+.item-nosebum .product-image {
+    width: 40%;
+}
+
+.product-info {
+    width: 40%;
+}
+
+.product-info h3 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.product-info .description {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.product-info .price {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.product-info .text{
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 10px;
+}
+.detail-link {
+    font-size: 16px;
+    font-weight: 500;
+    border-bottom: 1px solid #333;
+    padding-bottom: 2px;
+}
+
+/* Section 2: Model Banner */
+.model-banner-section {
+    width: 100%;
+    margin-top: 80px;
+    margin-bottom: 80px;
+    overflow: hidden;
+}
+
+.full-width-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+/* Section 3: New Arrivals (3단 제품 리스트) */
+.new-arrivals-section {
+    max-width: 1400px;
+    margin: 80px auto;
+    padding: 20px;
+}
+
+.new-arrivals-section h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+
+.product-list {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.product-card {
+    flex: 1;
+    text-align: center;
+    position: relative;
+}
+
+.product-card figure {
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s;
+}
+
+.product-card:hover img {
+    transform: scale(1.05);
+}
+
+.product-card .name {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.product-card .price {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Item 3의 화살표 */
+.product-card:last-child .product-arrow {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 25px;
+    height: 25px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.product-card:last-child .product-arrow::after {
+    content: '›'; /* 오른쪽 화살표 기호 */
+    font-size: 20px;
+    line-height: 1;
+    font-weight: bold;
+    color: #333;
+}
+
+
+/* Section 4: Instagram Feed */
+.instagram-section {
+    max-width: 1400px;
+    margin: 80px auto;
+    padding: 20px;
+}
+
+.instagram-handle {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    color: #00874e;
+}
+
+.insta-feed {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.insta-post {
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+}
+
+.insta-post img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s;
+}
+
+.insta-post:hover img {
+    opacity: 0.8;
+}
+
+/* ------------------------------------------- */
+/* 4. Footer */
+/* ------------------------------------------- */
+footer {
+    background-color: #00874e; /* 메인 배너와 동일한 그린 */
+    color: #fff;
+    padding: 30px 20px;
+}
+
+.footer-top {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-size: 14px;
+}
+
+.footer-bottom {
+    max-width: 1400px;
+    margin: 20px auto 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.copyright {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.sns-links {
+    display: flex;
+    gap: 15px;
+}
+
+.sns-icon {
+    width: 20px;
+    height: 20px;
+    display: block;
+    text-indent: -9999px;
+}
+
+.insta{
+    background-image: url(../img/instagram-logo-fill.png);
+    background-size: cover;
+}
+.youtube{
+    background-image: url(../img/youtube-logo-fill.png);
+    background-size: cover;
+}
+.X{
+    background-image: url(../img/x-logo-fill.png);
+    background-size: cover;
+}
+.facebook{
+    background-image: url(../img/facebook-logo-fill.png);
+    background-size: cover;
+}
+/* ------------------------------------------- */
+/* 5. Scroll Animation (애니메이션 초기 상태) */
+/* ------------------------------------------- */
+
+/* 스크롤 시 애니메이션될 요소의 초기 상태 설정 */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(50px); /* 50px 아래에서 시작 */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* JavaScript가 스크롤 시 추가할 클래스 */
+.animated {
+    opacity: 1;
+    transform: translateY(0); /* 원래 위치로 이동 */
+}
